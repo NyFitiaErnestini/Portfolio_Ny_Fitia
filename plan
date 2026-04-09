@@ -1,0 +1,168 @@
+Plan — Site Freelance + Portfolio (Ny Fitia)
+
+     Contexte
+
+     Ny Fitia est développeur full-stack freelance (backend, data, algorithmes). Il a besoin d'un site unique qui vend ses services et expose son portfolio. Le site part
+     de zéro.
+
+     ---
+     Stack technique
+
+     ┌────────────┬──────────────────┬──────────────────────────────────────────────────┐
+     │   Besoin   │      Choix       │                     Pourquoi                     │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ Bundler    │ Vite + React     │ Standard, rapide, zéro config                    │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ CSS        │ Tailwind CSS v4  │ Utilitaire, dark mode natif, responsive natif    │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ Routeur    │ react-router-dom │ Standard pour la navigation multi-pages en React │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ i18n       │ react-i18next    │ Standard, fichiers JSON simples                  │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ Animations │ framer-motion    │ API déclarative, légère                          │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ Icônes     │ lucide-react     │ SVG propres, tree-shakable                       │
+     ├────────────┼──────────────────┼──────────────────────────────────────────────────┤
+     │ Formulaire │ react-hook-form  │ Léger, performant                                │
+     └────────────┴──────────────────┴──────────────────────────────────────────────────┘
+
+     ---
+
+** Pages et navigation
+
+     Menu principal : Home — Services — Portfolio — Contact
+
+     ┌────────────────┬────────────┬─────────────────────────────────────────────────────────────────────┐
+     │      Page      │   Route    │                              Objectif                               │
+     ├────────────────┼────────────┼─────────────────────────────────────────────────────────────────────┤
+     │ Home (Landing) │ /          │ Accroche commerciale, vendre direct, CTA vers Services et Portfolio │
+     ├────────────────┼────────────┼─────────────────────────────────────────────────────────────────────┤
+     │ Services       │ /services  │ Détail des 4 offres (problème → solution → impact)                  │
+     ├────────────────┼────────────┼─────────────────────────────────────────────────────────────────────┤
+     │ Portfolio      │ /portfolio │ Les 3 projets avec détails (problème → réalisation → résultat)      │
+     ├────────────────┼────────────┼─────────────────────────────────────────────────────────────────────┤
+     │ Contact        │ /contact   │ Formulaire de contact ou CTA                                        │
+     └────────────────┴────────────┴─────────────────────────────────────────────────────────────────────┘
+
+     ---
+     
+** Structure des fichiers
+
+     site/
+     ├── src/
+     │   ├── main.jsx                  # Point d'entrée + BrowserRouter
+     │   ├── App.jsx                   # Layout global (Navbar + Outlet + Footer) + providers
+     │   ├── index.css                 # Imports Tailwind + styles globaux
+     │   │
+     │   ├── pages/
+     │   │   ├── Home.jsx              # Landing page (hero + aperçu services + aperçu projets)
+     │   │   ├── Services.jsx          # Page complète des services
+     │   │   ├── Portfolio.jsx         # Page complète du portfolio
+     │   │   └── Contact.jsx          # Page contact
+     │   │
+     │   ├── components/
+     │   │   ├── layout/
+     │   │   │   ├── Navbar.jsx        # Navigation fixe + toggle langue + toggle thème
+     │   │   │   └── Footer.jsx
+     │   │   └── ui/
+     │   │       ├── ServiceCard.jsx   # Carte d'un service
+     │   │       ├── ProjectCard.jsx   # Carte d'un projet
+     │   │       ├── Button.jsx        # Bouton réutilisable
+     │   │       ├── SectionTitle.jsx  # Titre de section
+     │   │       └── ThemeToggle.jsx   # Bouton dark/light
+     │   │
+     │   ├── context/
+     │   │   └── ThemeContext.jsx      # Context pour le thème clair/sombre
+     │   │
+     │   ├── hooks/
+     │   │   └── useTheme.js           # Hook pour consommer le ThemeContext
+     │   │
+     │   ├── i18n/
+     │   │   ├── index.js              # Config i18next
+     │   │   ├── fr.json               # Traductions FR
+     │   │   └── en.json               # Traductions EN
+     │   │
+     │   ├── data/
+     │   │   ├── services.js           # Données des 4 services
+     │   │   └── projects.js           # Données des 3 projets
+     │   │
+     │   └── assets/
+     │       └── fonts/
+     │
+     ├── public/projects/              # Images des projets (.webp)
+     ├── docs/                         # ARCHITECTURE.md, COMPONENTS.md, I18N.md, THEMING.md
+     └── README.md
+
+     ---
+     
+Stratégies clés
+
+     - Routing : react-router-dom avec un layout partagé (App.jsx = Navbar + <Outlet /> + Footer)
+     - Dark/Light : classe dark sur <html> + Tailwind darkMode: 'class' + localStorage
+     - i18n : react-i18next, clés dans les fichiers de données, textes dans fr.json/en.json
+     - Animations : fade-in sur les pages (AnimatePresence), stagger sur les cartes, hover subtil
+     - Mobile First : styles mobile par défaut, md: et lg: pour desktop
+
+     ---
+     Phases d'implémentation
+
+     Phase 1 — Fondations
+
+     - Init Vite + React, installer dépendances (dont react-router-dom)
+     - Configurer Tailwind, ESLint, Prettier
+     - Créer structure de dossiers
+     - ThemeContext + config i18n
+     - main.jsx avec BrowserRouter, App.jsx avec layout (Navbar + Outlet + Footer)
+     - Routes : /, /services, /portfolio, /contact
+     - Doc : README.md + ARCHITECTURE.md
+     
+     Phase 2 — Layout et Navigation
+
+     - Navbar (logo, liens : Home/Services/Portfolio/Contact, toggles langue/thème, burger mobile)
+     - Footer
+     - Active link (lien courant mis en évidence)
+     - Doc : COMPONENTS.md
+
+     Phase 3 — Home (Landing) + Services
+
+     - Page Home : Hero + aperçu rapide des services + CTA
+     - Page Services : grille des 4 services détaillés
+     - ServiceCard (problème → solution → impact)
+     - Traductions FR/EN + données
+     - Doc : I18N.md
+
+     Phase 4 — Portfolio + Contact
+
+     - Page Portfolio : les 3 projets détaillés
+     - ProjectCard (problème → réalisation → résultat)
+     - Page Contact : formulaire avec react-hook-form
+     - Images + données + traductions
+     - Doc : compléter COMPONENTS.md
+
+     Phase 5 — Animations et polish
+
+     - Transitions entre pages (framer-motion AnimatePresence)
+     - Animations d'entrée sur les cartes (whileInView, stagger)
+     - Navbar scroll effect
+     - SEO meta tags, optimisation images
+     - Test responsive sur mobile
+     - Doc : THEMING.md + finalisation
+
+     Phase 6 — Déploiement
+
+     - Build production (npm run build)
+     - Déployer (Vercel/Netlify)
+     - Doc : section déploiement dans README
+
+     ---
+Vérification
+
+     - npm run dev → site visible sur localhost
+     - Navigation entre les 4 pages fonctionne
+     - Tester toggle thème (dark/light persiste au reload)
+     - Tester toggle langue (FR/EN persiste au reload)
+     - Tester responsive (devtools mobile + tablette)
+     - Tester transitions entre pages
+     - Tester animations au scroll
+     - npm run build → build sans erreur
+
