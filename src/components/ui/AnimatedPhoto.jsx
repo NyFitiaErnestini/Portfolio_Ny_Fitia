@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Code, Server, Brain, Database } from 'lucide-react'
 
 const orbitIcons = [
@@ -8,11 +10,19 @@ const orbitIcons = [
   { Icon: Database, angle: 270 },
 ]
 
-export default function AnimatedPhoto({ src, alt }) {
+export default function AnimatedPhoto({ src, alt, ctaLabel, ctaTo }) {
+  const [touched, setTouched] = useState(false)
+
+  const handleTouch = () => setTouched(t => !t)
+  const isActive = touched // sur mobile = tap, sur desktop = géré par group-hover CSS
+
   return (
-    <div className="relative flex items-center justify-center">
+    <div
+      className="group relative flex items-center justify-center"
+      onTouchStart={handleTouch}
+    >
       {/* Morphing blob background */}
-      <div className="absolute w-72 h-72 md:w-[22rem] md:h-[22rem] lg:w-[26rem] lg:h-[26rem]">
+      <div className="absolute w-64 h-64 md:w-[22rem] md:h-[22rem] lg:w-[26rem] lg:h-[26rem]">
         <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="blobGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -30,25 +40,17 @@ export default function AnimatedPhoto({ src, alt }) {
                 'M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.3,88.5,-0.9C87,14.5,81.3,29,73.1,42.1C64.9,55.2,54.1,66.9,40.8,74.3C27.5,81.7,11.7,84.8,-2.8,89.5C-17.3,94.2,-30.5,100.5,-43.2,97.8C-55.9,95.1,-68,83.4,-76.4,69.6C-84.8,55.8,-89.4,39.9,-90.8,24.1C-92.2,8.3,-90.3,-7.4,-85.2,-21.7C-80.1,-36,-71.8,-48.9,-60.3,-57.6C-48.8,-66.3,-34.1,-70.8,-20.3,-74.1C-6.5,-77.4,6.4,-79.5,19.3,-79.2C32.2,-78.9,45.1,-76.2,44.7,-76.4Z',
               ],
             }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
             transform="translate(100 100)"
           />
         </svg>
       </div>
 
-      {/* Orbiting icons — on the circle border */}
+      {/* Orbiting icons */}
       <motion.div
-        className="absolute inset-0 z-20"
+        className="absolute inset-0 z-20 pointer-events-none"
         animate={{ rotate: 360 }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
         style={{ width: '100%', height: '100%' }}
       >
         {orbitIcons.map(({ Icon, angle }, i) => {
@@ -62,11 +64,7 @@ export default function AnimatedPhoto({ src, alt }) {
                 left: `calc(50% + 50% * ${Math.cos(rad)} - 1.25rem)`,
               }}
               animate={{ rotate: -360 }}
-              transition={{
-                duration: 25,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
+              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
             >
               <Icon className="w-5 h-5 md:w-6 md:h-6 text-primary dark:text-primary-light" />
             </motion.div>
@@ -84,8 +82,42 @@ export default function AnimatedPhoto({ src, alt }) {
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-cover object-[center_50%]"
+          className={`w-full h-full object-cover object-[center_50%] transition-transform duration-500 ${isActive ? 'scale-105' : 'group-hover:scale-105'}`}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
+        {ctaLabel && ctaTo && (
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            animate={{ backgroundColor: isActive ? 'rgba(17,24,39,0.35)' : 'rgba(17,24,39,0)' }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Desktop — hover CSS */}
+            <Link
+              to={ctaTo}
+              className="hidden md:block pointer-events-none translate-y-3 rounded-full border border-white/70 bg-white/95 px-5 py-2.5 text-sm font-semibold text-gray-900 opacity-0 shadow-lg transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 no-underline"
+            >
+              {ctaLabel}
+            </Link>
+            {/* Mobile — tap state */}
+            <motion.div
+              className="md:hidden"
+              initial={false}
+              animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 8 }}
+              transition={{ duration: 0.25 }}
+            >
+              {isActive && (
+                <Link
+                  to={ctaTo}
+                  className="rounded-full border border-white/70 bg-white/95 px-5 py-2.5 text-sm font-semibold text-gray-900 shadow-lg no-underline"
+                >
+                  {ctaLabel}
+                </Link>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
       </motion.div>
     </div>
   )

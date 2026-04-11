@@ -24,7 +24,7 @@ export default function ScrollButtons() {
   const btnClass = "w-10 h-10 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white hover:bg-primary hover:border-primary dark:hover:bg-primary dark:hover:border-primary transition-all duration-200"
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
+    <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-2">
       <AnimatePresence>
         {showTop && (
           <motion.button

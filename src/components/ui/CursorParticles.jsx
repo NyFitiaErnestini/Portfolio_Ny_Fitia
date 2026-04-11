@@ -6,6 +6,9 @@ export default function CursorParticles() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
+    // Skip on touch-only devices — no cursor, no point animating 60fps
+    if (window.matchMedia('(hover: none)').matches) return
+
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
