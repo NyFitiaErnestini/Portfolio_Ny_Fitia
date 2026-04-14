@@ -63,7 +63,6 @@ app.post('/api/chat', async (req, res) => {
     )
 
     const data = await response.json()
-    console.log('Gemini response:', JSON.stringify(data).slice(0, 300))
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text
     if (!text) throw new Error('No response: ' + JSON.stringify(data))
 

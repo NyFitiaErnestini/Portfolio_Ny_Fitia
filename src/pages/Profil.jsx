@@ -122,10 +122,10 @@ function FormationTimeline() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className={`relative mb-2 flex items-start sm:${isRight ? 'flex-row-reverse' : 'flex-row'} flex-row pl-10 sm:pl-0`}
+            className={`relative mb-2 flex items-start flex-row pl-10 sm:pl-0 ${isRight ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}
           >
             {/* Card — mobile: pleine largeur, desktop: moitié */}
-            <div className={`w-full sm:w-[calc(50%-28px)] text-left sm:${isRight ? 'text-right' : 'text-left'}`}>
+            <div className={`w-full sm:w-[calc(50%-28px)] text-left ${isRight ? 'sm:text-right' : 'sm:text-left'}`}>
               <div className={`p-3 rounded-xl border bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow
                 ${f.current ? 'border-primary/40 dark:border-primary-light/40' : 'border-gray-200 dark:border-gray-700'}`}
               >
@@ -147,7 +147,7 @@ function FormationTimeline() {
                 </p>
 
                 {/* Période */}
-                <div className={`flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 justify-start sm:${isRight ? 'justify-end' : 'justify-start'}`}>
+                <div className={`flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 justify-start ${isRight ? 'sm:justify-end' : 'sm:justify-start'}`}>
                   <Calendar className="w-2.5 h-2.5 shrink-0" />
                   {t(`profil.edu.${f.key}.period`)}
                 </div>
@@ -161,7 +161,7 @@ function FormationTimeline() {
 
                 {/* Badge "En cours" */}
                 {f.current && (
-                  <div className={`flex mt-2 justify-start sm:${isRight ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`flex mt-2 justify-start ${isRight ? 'sm:justify-end' : 'sm:justify-start'}`}>
                     <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-primary-light animate-pulse" />
                       {t('profil.edu.current')}

@@ -5,9 +5,9 @@ import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { ArrowRight, ExternalLink, Mail, MapPin, Phone, CheckCircle, AlertCircle, Loader } from 'lucide-react'
 
-const EMAILJS_SERVICE_ID  = 'service_wyn0puf'
-const EMAILJS_TEMPLATE_ID = 'template_4ex43nu'
-const EMAILJS_PUBLIC_KEY  = 'Uqvj98W5kFEfdBSA8'
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },

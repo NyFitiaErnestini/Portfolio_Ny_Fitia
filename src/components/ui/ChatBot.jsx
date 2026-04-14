@@ -151,9 +151,18 @@ export default function ChatBot() {
                 <p className="text-sm font-bold text-white dark:text-gray-900">{t('chat.title')}</p>
                 <p className="text-xs text-white/70 dark:text-gray-700">Ny Fitia · Full-Stack Dev</p>
               </div>
-              <div className="ml-auto flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs text-white/70 dark:text-gray-700">{t('chat.online')}</span>
+              <div className="ml-auto flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <span className="text-xs text-white/70 dark:text-gray-700">{t('chat.online')}</span>
+                </div>
+                <button
+                  onClick={handleToggle}
+                  className="text-white/70 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-colors"
+                  aria-label="Fermer le chat"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
             </div>
 

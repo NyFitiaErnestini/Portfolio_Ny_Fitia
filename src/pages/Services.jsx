@@ -377,7 +377,7 @@ function ServiceSection({ service, index, onVisible }) {
               </div>
             ))}
             <Link
-              to="/realisations"
+              to="/realisations#projets"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm text-white bg-primary dark:bg-primary-light hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-md ml-auto"
             >
               {t('services.cta.work')}
@@ -485,8 +485,7 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              to="/#contact"
-              onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)}
+              to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-white text-primary hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-md"
             >
               {t('services.cta.contact')}

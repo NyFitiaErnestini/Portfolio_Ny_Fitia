@@ -16,6 +16,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── Light mode: subtle blue tint on neutral surfaces ── */
+html:not(.dark) {
+  --color-gray-50:  #f0f7ff;
+  --color-gray-100: #e4efff;
+  --color-gray-200: #c8dcf5;
+}
+
+html:not(.dark) body {
+  background-color: #f5f9ff;
+}
+
 body {
   margin: 0;
   font-synthesis: none;

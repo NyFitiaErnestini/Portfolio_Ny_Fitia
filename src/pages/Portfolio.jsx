@@ -180,6 +180,7 @@ export default function Portfolio() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
+        id="projets"
         className="bg-gray-50 dark:bg-gray-800/40 border-y border-gray-100 dark:border-gray-800 py-16"
       >
         <div className="max-w-6xl mx-auto">
