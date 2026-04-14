@@ -3,17 +3,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { message, history = [] } = req.body
+  const { message, history = [], lang = 'fr' } = req.body
 
   if (!message) {
     return res.status(400).json({ error: 'Message required' })
   }
 
   const GEMINI_KEY = process.env.GEMINI_API_KEY
+  const langInstruction = lang.startsWith('en')
+    ? 'Always reply in English.'
+    : 'Réponds toujours en français.'
 
   const systemPrompt = `Tu es l'assistant virtuel de Ny Fitia Ernestini, développeur Full-Stack basé à Madagascar.
 Réponds toujours de manière concise, professionnelle et chaleureuse. Maximum 3-4 phrases par réponse.
-Réponds dans la langue du visiteur (français ou anglais).
+${langInstruction}
 
 À propos de Ny Fitia :
 - Développeur Full-Stack disponible pour de nouveaux projets

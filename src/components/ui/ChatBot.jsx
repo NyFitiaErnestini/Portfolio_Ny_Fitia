@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ChatBot() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [open, setOpen]         = useState(false)
   const [input, setInput]       = useState('')
   const [loading, setLoading]   = useState(false)
@@ -48,7 +48,7 @@ export default function ChatBot() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg, history: history.slice(-6) }),
+        body: JSON.stringify({ message: msg, history: history.slice(-6), lang: i18n.language }),
       })
       const data = await res.json()
       setHistory(h => [...h, { role: 'assistant', content: data.reply || t('chat.error') }])

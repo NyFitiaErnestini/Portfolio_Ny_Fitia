@@ -5,9 +5,13 @@ dotenv.config({ path: '.env.local' })
 const app = express()
 app.use(express.json())
 
-const systemPrompt = `Tu es l'assistant virtuel de Ny Fitia Ernestini, développeur Full-Stack basé à Madagascar.
+const buildSystemPrompt = (lang = 'fr') => {
+  const langInstruction = lang.startsWith('en')
+    ? 'Always reply in English.'
+    : 'Réponds toujours en français.'
+  return `Tu es l'assistant virtuel de Ny Fitia Ernestini, développeur Full-Stack basé à Madagascar.
 Réponds toujours de manière concise, professionnelle et chaleureuse. Maximum 3-4 phrases par réponse.
-Réponds dans la langue du visiteur (français ou anglais).
+${langInstruction}
 
 À propos de Ny Fitia :
 - Développeur Full-Stack disponible pour de nouveaux projets
@@ -33,10 +37,12 @@ Projets réalisés :
 
 Si on te demande les tarifs, dis que Ny Fitia propose un devis personnalisé selon le projet et invite à le contacter directement.
 Ne réponds qu'aux questions liées à Ny Fitia, ses services, compétences ou projets. Pour tout autre sujet, redirige poliment vers le contact.`
+}
 
 app.post('/api/chat', async (req, res) => {
-  const { message, history = [] } = req.body
+  const { message, history = [], lang = 'fr' } = req.body
   if (!message) return res.status(400).json({ error: 'Message required' })
+  const systemPrompt = buildSystemPrompt(lang)
 
   const GEMINI_KEY = process.env.GEMINI_API_KEY
 
