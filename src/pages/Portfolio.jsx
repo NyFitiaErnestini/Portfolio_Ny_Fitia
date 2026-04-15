@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import { projects } from '../data/projects'
 import ImageSlider from '../components/ui/ImageSlider'
-import { MapPin, Calendar, Briefcase, Code2, ArrowUp, Mail, Phone, ExternalLink } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { MapPin, Calendar, Briefcase, Code2, ArrowUp, ArrowRight, Mail, Phone, ExternalLink, User } from 'lucide-react'
 
 /* ─── Expériences ─────────────────────────────────────────────── */
 const experiences = [
@@ -200,6 +201,30 @@ export default function Portfolio() {
           >
             <ProjectCarousel />
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="px-6 mt-8 flex flex-col sm:flex-row gap-3 justify-center"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg hover:shadow-primary/25"
+            >
+              <Mail className="w-4 h-4" />
+              {t('nav.contact')}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/profil"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light transition-colors"
+            >
+              <User className="w-4 h-4" />
+              {t('nav.profil')}
+            </Link>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -346,6 +371,23 @@ export default function Portfolio() {
                 Malt
               </a>
             </div>
+
+            <motion.div
+              custom={2}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-6"
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl hover:shadow-primary/25"
+              >
+                {t('home.cta.button')}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
