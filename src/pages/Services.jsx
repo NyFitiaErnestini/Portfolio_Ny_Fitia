@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
@@ -424,6 +425,10 @@ export default function Services() {
 
   return (
     <div>
+      <Helmet>
+        <title>Services — Développement Web, SEO & Automatisation | Ny Fitia</title>
+        <meta name="description" content="Découvrez mes services : création d'applications React/Next.js, APIs Node.js, audit et optimisation SEO technique, automatisation de processus. Basé à Madagascar, disponible pour clients FR/EU." />
+      </Helmet>
       {/* Hero */}
       <div className="px-6 pt-10 pb-8 text-center max-w-2xl mx-auto">
         <motion.p

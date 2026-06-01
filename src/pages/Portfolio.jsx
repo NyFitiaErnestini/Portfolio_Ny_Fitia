@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
@@ -151,6 +152,10 @@ export default function Portfolio() {
 
   return (
     <div>
+      <Helmet>
+        <title>Portfolio — Projets Web & Applications | Ny Fitia Madagascar</title>
+        <meta name="description" content="Découvrez mes réalisations : sites web, applications React, APIs et projets d'automatisation. Développeur freelance Full-Stack à Madagascar." />
+      </Helmet>
 
       {/* ── Hero ── */}
       <div className="px-6 pt-10 pb-10 text-center max-w-2xl mx-auto">

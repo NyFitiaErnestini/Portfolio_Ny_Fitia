@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
@@ -199,6 +200,10 @@ export default function Profil() {
 
   return (
     <div>
+      <Helmet>
+        <title>Profil — Développeur Full-Stack Madagascar | Ny Fitia</title>
+        <meta name="description" content="Mon parcours, mes compétences et ma formation. Développeur freelance Full-Stack basé à Madagascar, spécialisé en React, Node.js, SEO et automatisation." />
+      </Helmet>
       <CvModal open={cvOpen} onClose={() => setCvOpen(false)} />
 
       {/* ══ Qui suis-je — hero split ══════════════════════════════ */}

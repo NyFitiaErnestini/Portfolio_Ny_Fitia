@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import './i18n'
 import './index.css'
 import App from './App.jsx'
@@ -13,6 +14,7 @@ import Contact from './pages/Contact.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider>
     <BrowserRouter>
       <Analytics />
       <Routes>
@@ -25,5 +27,6 @@ createRoot(document.getElementById('root')).render(
         </Route>
       </Routes>
     </BrowserRouter>
+    </HelmetProvider>
   </StrictMode>,
 )

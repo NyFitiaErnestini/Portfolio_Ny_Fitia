@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -247,6 +248,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
+      <Helmet>
+        <title>Développeur Full-Stack, SEO & Automatisation à Madagascar | Ny Fitia</title>
+        <meta name="description" content="Développeur freelance Full-Stack basé à Madagascar. Création de sites et applications web performants, SEO technique et automatisation. Tarifs compétitifs pour clients français et européens. Devis gratuit." />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center px-6 py-16 md:py-0 overflow-hidden">
         <CursorParticles />

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
@@ -45,6 +46,10 @@ export default function Contact() {
 
   return (
     <section className="border-t border-gray-200 dark:border-gray-700">
+      <Helmet>
+        <title>Contact — Devis Gratuit | Ny Fitia Développeur Madagascar</title>
+        <meta name="description" content="Contactez-moi pour discuter de votre projet web. Devis gratuit et réponse rapide. Développeur freelance Full-Stack basé à Madagascar, disponible pour clients FR/EU." />
+      </Helmet>
 
       {/* Hero */}
       <div className="px-6 pt-20 pb-6 text-center bg-white dark:bg-gray-800/50">
