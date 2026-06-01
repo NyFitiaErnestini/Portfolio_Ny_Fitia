@@ -153,8 +153,8 @@ export default function Portfolio() {
   return (
     <div>
       <Helmet>
-        <title>Portfolio — Projets Web & Applications | Ny Fitia Madagascar</title>
-        <meta name="description" content="Découvrez mes réalisations : sites web, applications React, APIs et projets d'automatisation. Développeur freelance Full-Stack à Madagascar." />
+        <title>Portfolio — Projets Web & Applications sur Mesure | Ny Fitia Madagascar</title>
+        <meta name="description" content="Découvrez mes réalisations : sites web, applications sur mesure et projets SEO. Développeur freelance basé à Madagascar, disponible pour vos projets." />
       </Helmet>
 
       {/* ── Hero ── */}

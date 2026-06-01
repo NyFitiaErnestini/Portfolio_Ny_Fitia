@@ -249,8 +249,8 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <Helmet>
-        <title>Développeur Full-Stack, SEO & Automatisation à Madagascar | Ny Fitia</title>
-        <meta name="description" content="Développeur freelance Full-Stack basé à Madagascar. Création de sites et applications web performants, SEO technique et automatisation. Tarifs compétitifs pour clients français et européens. Devis gratuit." />
+        <title>Développeur Freelance à Madagascar | Sites Web & Automatisation | Ny Fitia</title>
+        <meta name="description" content="Développeur freelance basé à Madagascar. Création de sites et applications web performants, SEO technique et automatisation. Tarifs compétitifs pour clients français et européens. Devis gratuit sous 24h." />
       </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center px-6 py-16 md:py-0 overflow-hidden">

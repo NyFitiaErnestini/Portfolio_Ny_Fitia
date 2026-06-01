@@ -201,8 +201,8 @@ export default function Profil() {
   return (
     <div>
       <Helmet>
-        <title>Profil — Développeur Full-Stack Madagascar | Ny Fitia</title>
-        <meta name="description" content="Mon parcours, mes compétences et ma formation. Développeur freelance Full-Stack basé à Madagascar, spécialisé en React, Node.js, SEO et automatisation." />
+        <title>Développeur Freelance Madagascar — Ny Fitia Ernestini</title>
+        <meta name="description" content="Développeur Full-Stack freelance basé à Antananarivo, Madagascar. Disponible pour missions longues durées pour clients français, belges et suisses." />
       </Helmet>
       <CvModal open={cvOpen} onClose={() => setCvOpen(false)} />
 

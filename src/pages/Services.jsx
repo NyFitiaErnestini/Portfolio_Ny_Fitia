@@ -426,8 +426,8 @@ export default function Services() {
   return (
     <div>
       <Helmet>
-        <title>Services — Développement Web, SEO & Automatisation | Ny Fitia</title>
-        <meta name="description" content="Découvrez mes services : création d'applications React/Next.js, APIs Node.js, audit et optimisation SEO technique, automatisation de processus. Basé à Madagascar, disponible pour clients FR/EU." />
+        <title>Services Développement Web & SEO à Madagascar — Tarifs Compétitifs</title>
+        <meta name="description" content="Création de sites web, applications sur mesure, audit SEO technique et automatisation de processus. Freelance basé à Madagascar. Devis gratuit." />
       </Helmet>
       {/* Hero */}
       <div className="px-6 pt-10 pb-8 text-center max-w-2xl mx-auto">

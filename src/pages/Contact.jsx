@@ -47,8 +47,8 @@ export default function Contact() {
   return (
     <section className="border-t border-gray-200 dark:border-gray-700">
       <Helmet>
-        <title>Contact — Devis Gratuit | Ny Fitia Développeur Madagascar</title>
-        <meta name="description" content="Contactez-moi pour discuter de votre projet web. Devis gratuit et réponse rapide. Développeur freelance Full-Stack basé à Madagascar, disponible pour clients FR/EU." />
+        <title>Contacter un Développeur Freelance à Madagascar — Devis Gratuit</title>
+        <meta name="description" content="Besoin d'un développeur web freelance à Madagascar ? Contactez Ny Fitia pour un devis gratuit sous 24h. Disponible pour clients français et européens." />
       </Helmet>
 
       {/* Hero */}
