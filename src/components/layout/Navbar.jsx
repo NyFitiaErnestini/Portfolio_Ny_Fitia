@@ -9,6 +9,7 @@ const navLinks = [
   { to: '/', key: 'nav.home' },
   { to: '/services', key: 'nav.services' },
   { to: '/realisations', key: 'nav.realisations' },
+  { to: '/blog', key: 'nav.blog' },
   { to: '/profil', key: 'nav.profil' },
 ]
 

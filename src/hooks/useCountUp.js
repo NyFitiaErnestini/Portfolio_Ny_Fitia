@@ -24,7 +24,6 @@ export function useCountUp(target, duration = 2000, startWhenVisible = true) {
 
   useEffect(() => {
     if (!started) return
-    let start = 0
     const startTime = performance.now()
 
     const animate = (now) => {

@@ -22,14 +22,11 @@ function PipelineStep({ step, index, activeStep, setActiveStep }) {
   const [hovered, setHovered] = useState(false)
   const { t } = useTranslation()
 
-  const [entered, setEntered] = useState(false)
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
-      onAnimationComplete={() => setEntered(true)}
       transition={{
         delay: index * 0.18,
         duration: 0.5,
@@ -40,7 +37,7 @@ function PipelineStep({ step, index, activeStep, setActiveStep }) {
     >
       <motion.div
         className="flex flex-col items-center gap-3 w-full"
-        animate={entered ? { y: [0, -14, 0] } : {}}
+        animate={{ y: [0, -14, 0] }}
         transition={{
           delay: index * 0.4,
           duration: 0.6,

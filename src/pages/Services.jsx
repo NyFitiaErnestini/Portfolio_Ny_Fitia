@@ -25,8 +25,9 @@ const services = [
     icon: Gauge,
     i18nKey: 'services.performance',
     taglineKey: 'services.nav.performance.tagline',
+    ctaKey: 'services.performance.cta',
     stats: [
-      { value: '×3', statKey: 'services.stat.performance.0' },
+      { value: 'SEO + Performance', statKey: 'services.stat.performance.0' },
     ],
   },
   {
@@ -97,26 +98,28 @@ function Illustration({ id, t }) {
   )
 
   if (id === 'performance') return (
-    // Lighthouse score + graphe avant/après
+    // Audit SEO technique + performance
     <svg viewBox="0 0 320 200" className="w-full h-full" aria-hidden="true">
-      {/* Score Lighthouse */}
+      {/* Score performance */}
       <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeWidth="2" strokeOpacity="0.08" />
       <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="round"
         strokeDasharray="395" strokeDashoffset="40" strokeOpacity="0.65"
         transform="rotate(-90 100 100)" />
-      <text x="100" y="93" textAnchor="middle" fontSize="32" fontWeight="800" fill="currentColor" opacity="0.85">90</text>
-      <text x="100" y="110" textAnchor="middle" fontSize="9" fill="currentColor" opacity="0.4">Lighthouse</text>
-      <text x="100" y="122" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.3">Performance</text>
-      {/* Barres avant / après */}
+      <text x="100" y="93" textAnchor="middle" fontSize="30" fontWeight="800" fill="currentColor" opacity="0.85">90+</text>
+      <text x="100" y="110" textAnchor="middle" fontSize="9" fill="currentColor" opacity="0.4">Performance</text>
+      <text x="100" y="122" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.3">objectif</text>
+      {/* Indicateurs SEO et erreurs techniques */}
       <rect x="210" y="60" width="20" height="110" rx="4" fill="currentColor" opacity="0.08" />
       <rect x="210" y="105" width="20" height="65" rx="4" fill="currentColor" opacity="0.25" />
-      <text x="220" y="182" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.4">{t('services.illus.performance.before')}</text>
+      <text x="220" y="182" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.4">{t('services.illus.performance.seo')}</text>
       <rect x="244" y="60" width="20" height="110" rx="4" fill="currentColor" opacity="0.08" />
       <rect x="244" y="62" width="20" height="108" rx="4" fill="currentColor" opacity="0.6" />
-      <text x="254" y="182" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.5">{t('services.illus.performance.after')}</text>
+      <text x="254" y="182" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.5">{t('services.illus.performance.errors')}</text>
       {/* Labels métriques */}
       <rect x="196" y="30" width="108" height="18" rx="4" fill="currentColor" opacity="0.06" />
       <text x="250" y="43" textAnchor="middle" fontSize="8" fill="currentColor" opacity="0.45">{t('services.illus.performance.label')}</text>
+      <text x="220" y="98" textAnchor="middle" fontSize="8" fontWeight="700" fill="currentColor" opacity="0.5">95+</text>
+      <text x="254" y="55" textAnchor="middle" fontSize="8" fontWeight="700" fill="currentColor" opacity="0.6">OK</text>
       <line x1="196" y1="60" x2="304" y2="60" stroke="currentColor" strokeWidth="1" strokeDasharray="3,2" opacity="0.15" />
     </svg>
   )
@@ -379,9 +382,9 @@ function ServiceSection({ service, index, onVisible }) {
             ))}
             <Link
               to="/realisations#projets"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm text-white bg-primary dark:bg-primary-light hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-md ml-auto"
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm text-white bg-primary dark:bg-primary-light hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-md ${service.ctaKey ? 'w-full justify-center sm:w-auto sm:ml-auto' : 'ml-auto'}`}
             >
-              {t('services.cta.work')}
+              {t(service.ctaKey || 'services.cta.work')}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -391,9 +394,9 @@ function ServiceSection({ service, index, onVisible }) {
         <motion.div custom={2} variants={fadeUp} className="flex-1 min-w-0 w-full max-w-md">
           <div className="relative rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800/60 shadow-[0_4px_32px_rgba(0,0,0,0.06)] p-6 aspect-[16/10] text-primary dark:text-primary-light">
             <Illustration id={service.id} t={t} />
-            <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-primary/10 dark:bg-primary-light/10 text-primary dark:text-primary-light border border-primary/20 dark:border-primary-light/20 shadow-sm">
+            <div className="absolute bottom-4 right-4 max-w-[calc(100%-2rem)] flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-primary/10 dark:bg-primary-light/10 text-primary dark:text-primary-light border border-primary/20 dark:border-primary-light/20 shadow-sm">
               <CheckCircle className="w-3.5 h-3.5" />
-              {service.stats[0].value} {t(service.stats[0].statKey)}
+              <span className="min-w-0 leading-tight">{service.stats[0].value} {t(service.stats[0].statKey)}</span>
             </div>
           </div>
         </motion.div>

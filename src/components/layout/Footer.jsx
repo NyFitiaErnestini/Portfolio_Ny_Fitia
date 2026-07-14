@@ -47,6 +47,7 @@ export default function Footer() {
                 { to: '/',            label: t('nav.home') },
                 { to: '/services',    label: t('nav.services') },
                 { to: '/realisations',label: t('nav.realisations') },
+                { to: '/blog',        label: t('nav.blog') },
                 { to: '/contact',     label: t('nav.contact') },
               ].map(({ to, label }) => (
                 <li key={to}>

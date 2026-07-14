@@ -50,17 +50,19 @@ function ProjectCarousel() {
   const { t } = useTranslation()
   const trackRef = useRef(null)
   const isHovered = useRef(false)
-  let isDown = false, startX = 0, scrollLeft = 0
+  const isDown = useRef(false)
+  const startX = useRef(0)
+  const scrollLeft = useRef(0)
 
-  const onMouseDown  = (e) => { isDown = true; startX = e.pageX - trackRef.current.offsetLeft; scrollLeft = trackRef.current.scrollLeft }
-  const onMouseLeave = ()  => { isDown = false; isHovered.current = false }
-  const onMouseUp    = ()  => { isDown = false }
+  const onMouseDown  = (e) => { isDown.current = true; startX.current = e.pageX - trackRef.current.offsetLeft; scrollLeft.current = trackRef.current.scrollLeft }
+  const onMouseLeave = ()  => { isDown.current = false; isHovered.current = false }
+  const onMouseUp    = ()  => { isDown.current = false }
   const onMouseEnter = ()  => { isHovered.current = true }
   const onMouseMove  = (e) => {
-    if (!isDown) return
+    if (!isDown.current) return
     e.preventDefault()
     const x = e.pageX - trackRef.current.offsetLeft
-    trackRef.current.scrollLeft = scrollLeft - (x - startX) * 1.2
+    trackRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.2
   }
 
   useEffect(() => {
