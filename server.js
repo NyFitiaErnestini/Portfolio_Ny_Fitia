@@ -25,7 +25,7 @@ ${langInstruction}
 Services proposés :
 1. Création d'applications web sur mesure (React, Node.js, Symfony)
 2. Conception de backend & APIs fiables (REST, WebSocket, sécurité)
-3. Amélioration des performances web (Lighthouse +90, SEO)
+3. SEO technique & performance web
 4. Automatisation & logique métier (-80% tâches manuelles)
 
 Projets réalisés :
