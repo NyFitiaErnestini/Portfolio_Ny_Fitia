@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "server": "node server.js",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "prebuild": "npm run sitemap",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
